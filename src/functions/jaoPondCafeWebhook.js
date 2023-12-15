@@ -171,7 +171,18 @@ app.http('jaoPondCafeWebhook', {
                 break;
             case DIALOGFLOW_EVENT.CART_SUBMIT:
                 if (carts?.[sessionID] && carts?.[sessionID]?.length > 0) {
-                    // TODO handle etc.
+                    const endpoint = "https://657bfe88394ca9e4af1528b1.mockapi.io/products"
+                    const cartItems = carts?.[sessionID]
+                    for (let index = 0; index < cartItems.length; index++) {
+                        const cartItem = carts[index];
+                        const product = PRODUCTS[cartItem.item_id]
+                        const response = await axios.post(endpoint, {
+                            "product_id": cartItem.item_id,
+                            "amount": cartItem.qty * product.price,
+                            "qty": cartItem.qty
+                        })
+                        context.log(JSON.stringify(response))
+                    }
                     replyMessageToLine('Submit รายการแล้วรออาหารมาเสริฟใน 15 นาที', replyToken)
                 } else {
                     replyMessageToLine('ไม่มีสินค้าในตะกร้า กรุณาเพิ่มสินค้าก่อน', replyToken)
