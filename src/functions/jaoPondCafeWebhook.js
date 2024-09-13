@@ -2,7 +2,7 @@ const { app } = require('@azure/functions');
 const axios = require("axios");
 
 const LINE_REPLY_URL = 'https://api.line.me/v2/bot/message/reply';
-const LINE_ACCESS_TOKEN = "906i2mNZTYSU2UEBYQJAeGx+t/nL4DGprifhv18pmvTa3vj7B04Q3d1uuWAdLD6jKQxBBz9YxYja10Bq2IbolukGLKSqhWy2uU+fqm0NNXHDpZ9cpckt3SR33xeLfNtILfuWbYvN6mPOmjCizEyKqAdB04t89/1O/w1cDnyilFU="
+const LINE_ACCESS_TOKEN = "..."
 
 var carts = {}
 const PRODUCTS = {
